@@ -1,0 +1,15 @@
+services:
+    postgres:
+        image: postgres:11
+        container_name: db
+        environment:
+          POSTGRES_DB: blogster
+          POSTGRES_PASSWORD: postgres
+        volumes:
+          - atreus_pg_db:/var/lib/postgresql/data
+        ports:
+          - 5432:5432
+        networks:
+          - atreus
+    blogster:
+        
