@@ -26,7 +26,7 @@ func RegisterAuthorPostRoutes(router *gin.RouterGroup) {
 
 func getAllPosts() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		postsList, err = controllers.GetAllPosts()
+		postsList, err := controllers.GetAllPosts()
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": "Failed to get posts list"})
 			return
@@ -59,7 +59,7 @@ func post() gin.HandlerFunc {
 func getPostsListForAuthor() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authorID := c.Param("authorID")
-		postsList, err = controllers.GetPostsList(authorID)
+		postsList, err = controllers.GetPostsListForAuthor(authorID)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": "Failed to get posts list"})
 			return

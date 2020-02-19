@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// RegisterCommentRoutes defines author CRUD routes
-func RegisterCommentRoutes(router *gin.RouterGroup) {
+// RegisterReactRoutes defines react CU routes
+func RegisterReactRoutes(router *gin.RouterGroup) {
 	router.POST("/:postID/react/", react())
-	router.PATCH("/:postID/react/:reactID/", updateReact())
+	router.PATCH("/:postID/react/:reactID/", updateReaction())
 }
 
 func react() gin.HandlerFunc {
@@ -33,7 +33,7 @@ func react() gin.HandlerFunc {
 	}
 }
 
-func updateReact() gin.HandlerFunc {
+func updateReaction() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		postID := c.Param("postID")
 		reactID := c.Param("reactID")

@@ -11,13 +11,13 @@ import (
 )
 
 // GetAuthors gets all user names
-func GetAuthors() (*models.Author, error) {
+func GetAuthors() ([]models.Author, error) {
 	authors, err := database.GetAuthors()
 	if err != nil {
 		return nil, errors.New("Failed to get list of authors")
 	}
 
-	return &authors, nil
+	return authors, nil
 }
 
 // Registration signs up a user
