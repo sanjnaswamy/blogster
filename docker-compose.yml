@@ -1,0 +1,27 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:11
+    container_name: db
+    environment:
+      POSTGRES_DB: blogster
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - blogster_pg_db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - blogster
+  blogster:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    networks:
+      - blogster
+volumes:
+  blogster_pg_db:
+    driver: local
+networks:
+  blogster:
+    external: true
